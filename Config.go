@@ -11,9 +11,8 @@ const (
 	path = "./Config.yaml"
 )
 
-
 // Read Configs from file or create default Configs
-func ReadConfigs(defaultConfigString string) (map[string]string, error) {
+func ReadConfigs(defaultConfigString string) (map[string]interface{}, error) {
 	logger.DEBUG("Reading Config File or Creating Config File if not exists")
 
 	// Fetch/ Create Yaml config file
