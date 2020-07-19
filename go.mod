@@ -1,4 +1,4 @@
-module github.com/danaina/configs
+module github.com/danmaina/configs
 
 go 1.14
 
