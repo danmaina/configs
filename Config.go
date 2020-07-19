@@ -14,7 +14,7 @@ const (
 
 
 // Read Configs from file or create default Configs
-func ReadConfigs(configStruct *struct{}, defaultConfig string) (*struct{}, error) {
+func ReadConfigs(configStruct interface{}, defaultConfig string) (*interface{}, error) {
 	logger.DEBUG("Reading Config File or Creating Config File if not exists")
 
 	// Fetch/ Create Yaml config file
