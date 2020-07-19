@@ -33,7 +33,7 @@ func ReadConfigs(defaultConfigString string) (interface{}, error) {
 		return nil, errReadingByteArr
 	}
 
-	var configStruct *interface{}
+	var configStruct interface{}
 
 	// Get config from yaml
 	// Get Configuration from file yaml
