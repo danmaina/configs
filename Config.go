@@ -14,7 +14,7 @@ const (
 
 
 // Read Configs from file or create default Configs
-func ReadConfigs(configStruct interface{}, defaultConfig string) (*interface{}, error) {
+func ReadConfigs(defaultConfigString string) (*interface{}, error) {
 	logger.DEBUG("Reading Config File or Creating Config File if not exists")
 
 	// Fetch/ Create Yaml config file
@@ -33,6 +33,8 @@ func ReadConfigs(configStruct interface{}, defaultConfig string) (*interface{}, 
 		return nil, errReadingByteArr
 	}
 
+	var configStruct *interface{}
+
 	// Get config from yaml
 	// Get Configuration from file yaml
 	errDecodingFileYaml := yaml.Unmarshal(configFileByteArr, &configStruct)
@@ -48,9 +50,9 @@ func ReadConfigs(configStruct interface{}, defaultConfig string) (*interface{}, 
 	if configStruct == nil {
 		logger.ERR("Config File Does Not Contain any information, Loading Default Configs")
 
-		errDecodingDefaultYaml := yaml.Unmarshal([]byte(defaultConfig), &configStruct)
+		errDecodingDefaultYaml := yaml.Unmarshal([]byte(defaultConfigString), &configStruct)
 
-		lenConfigs, errWritingDefaultConfigs := configFile.WriteString(defaultConfig)
+		lenConfigs, errWritingDefaultConfigs := configFile.WriteString(defaultConfigString)
 
 		if errWritingDefaultConfigs != nil {
 			logger.ERR("Could not write default configs to config file")
